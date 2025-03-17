@@ -250,7 +250,7 @@ export default function Home() {
         <h1 className="text-4xl font-bold text-gray-800">Hello, {user ? user.name : "you"}!</h1>
         <p className="mt-4 text-lg text-gray-500">Your uploaded documents</p>
       </section>
-      <main className="flex flex-wrap justify-between items-center sm:items-start p-8 pb-20 sm:p-20 min-h-screen w-full bg-white">
+      <main className="flex flex-wrap justify-between items-center sm:items-start p-8 pb-20 sm:p-20 min-h-screen w-full bg-gray">
         {documents.length === 0 ? (
           <div className="flex flex-col items-center justify-center w-full h-full">
             <img src="/icons/file.svg" alt="Empty" className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 mb-4" />
