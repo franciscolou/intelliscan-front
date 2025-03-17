@@ -108,7 +108,7 @@ const RegisterPage = () => {
       className="flex justify-center items-center h-screen bg-cover bg-center text-white font-[family-name:var(--font-geist-sans)]"
       style={{ backgroundImage: "url('/login/blue_bg_inverted.png')" }}
     >
-      <div className="flex justify-center w-full md:w-1/3 p-4 md:p-0">
+      <div className="flex justify-center w-full lg:w-1/3 xl:w-2/4 p-4 md:p-0">
         <RegisterForm
           username={username}
           password={password}

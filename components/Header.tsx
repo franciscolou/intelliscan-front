@@ -13,11 +13,11 @@ const Header: React.FC<HeaderProps> = ({ handleLogout }) => {
   };
 
   return (
-    <header className="top-0 left-0 p-4 border-b border-gray-300 bg-[white] shadow-md flex justify-between items-center">
+    <header className="top-0 left-0 p-4 border-b border-gray-300 bg-gray-300 shadow-md flex justify-between items-center">
       <img
         src="/logo/logo_black.png"
         alt="Logo"
-        className="h-16 mr-4 cursor-pointer"
+        className="h-16 mr-4 cursor-pointer transition-transform duration-500 hover:scale-110"
         onClick={handleLogoClick}
       />
       <button

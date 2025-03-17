@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import InputField from '../InputField';
 
 interface FormProps {
@@ -17,10 +18,17 @@ const LoginForm: React.FC<FormProps> = ({
   error,
   handleSubmit,
 }) => {
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit = async (e: React.FormEvent) => {
+    setLoading(true); // Set loading to true when the form is submitted
+    await handleSubmit(e);
+    setLoading(false); // Set loading back to false after the submission is finished
+  };
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       className="w-full md:w-3/5 rounded-lg p-6 md:p-10 pb-16 md:pb-32 relative"
       style={{ backgroundColor: 'rgba(255, 255, 255, 10%)' }}
     >
@@ -56,9 +64,34 @@ const LoginForm: React.FC<FormProps> = ({
       </div>
       <button
         type="submit"
-        className="absolute bottom-4 right-4 p-2 bg-[#1ba7ca] text-white rounded hover:bg-black hover:cursor-pointer transition-colors duration-300"
+        className={`absolute bottom-4 right-4 p-2 w-24 h-10 ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#1ba7ca] text-white'} rounded hover:${loading ? '' : 'bg-black hover:cursor-pointer'} transition-colors duration-300 flex items-center justify-center`}
+        disabled={loading} // Disable button when loading
       >
-        Confirm
+        {loading ? (
+          <svg
+            className="animate-spin h-5 w-5 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+              className="opacity-25"
+            />
+            <path
+              fill="currentColor"
+              d="M4 12a8 8 0 0116 0"
+              className="opacity-75"
+            />
+          </svg>
+        ) : (
+          'Confirm'
+        )}
       </button>
     </form>
   );
