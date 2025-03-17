@@ -30,7 +30,6 @@ export default function DocumentPage() {
   const [document, setDocument] = useState<Document | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState("");
-  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [isSending, setIsSending] = useState(false); // New state for loading spinner
   const router = useRouter();
@@ -89,8 +88,6 @@ export default function DocumentPage() {
         }
         if (!response.ok) throw new Error("Error fetching user information");
 
-        const userData = await response.json();
-        setUser(userData);
       } catch (error) {
         if (error instanceof Error) {
           console.error("Error fetching user information:", error);

@@ -11,8 +11,6 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [isMounted, setIsMounted] = useState(false);
   const [error, setError] = useState("");
-  const [usernameError, setUsernameError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -24,8 +22,6 @@ const LoginPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    setUsernameError(false);
-    setPasswordError(false);
 
     try {
       const response = await fetch(`${root}/auth/login`, {
@@ -49,12 +45,6 @@ const LoginPage = () => {
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
-        if (error.message.toLowerCase().includes("username")) {
-          setUsernameError(true);
-        }
-        if (error.message.toLowerCase().includes("password")) {
-          setPasswordError(true);
-        }
       } else {
         setError("An unknown error occurred");
       }

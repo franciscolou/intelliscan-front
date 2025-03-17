@@ -86,6 +86,7 @@ export default function Home() {
         const userData = await response.json();
         setUser(userData);
       } catch (error) {
+        console.error(error);
       }
     };
 

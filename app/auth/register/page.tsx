@@ -72,11 +72,15 @@ const RegisterPage = () => {
       }
 
       router.push("/auth/login");
-    } catch (error: any) {
-      if (error.message.includes("already a user with this name")) {
-        setUsernameError("This username is already taken.");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        if (error.message.includes("already a user with this name")) {
+          setUsernameError("This username is already taken.");
+        } else {
+          console.error("Error:", error);
+        }
       } else {
-        console.error("Error:", error);
+        console.error("Unknown error:", error);
       }
     }
   };

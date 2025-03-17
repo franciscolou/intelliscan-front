@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import InputField from '../InputField';
 
 interface FormProps {
@@ -18,9 +17,6 @@ const LoginForm: React.FC<FormProps> = ({
   error,
   handleSubmit,
 }) => {
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    e.target.style.backgroundColor = 'rgba(255, 255, 255, 50%)';
-  };
 
   return (
     <form
@@ -52,7 +48,7 @@ const LoginForm: React.FC<FormProps> = ({
       />
       <div className="flex justify-end mb-4">
         <span className="text-gray-300">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <a href="/auth/register" className="underline text-blue-300">
             Register
           </a>.
