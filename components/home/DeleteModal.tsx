@@ -18,7 +18,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
   return (
     <div className="fixed inset-0 flex items-center justify-center" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
       <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 sm:w-3/4 md:w-1/2 lg:w-1/3">
-        <p className="mb-4">Are you sure you want to delete '{documentTitle}'?</p>
+        <p className="mb-4">Are you sure you want to delete &apos;{documentTitle}&apos;?</p>
         <div className="flex justify-end">
           <button
             onClick={handleDeleteConfirm}

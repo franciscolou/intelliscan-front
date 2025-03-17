@@ -145,7 +145,7 @@ const ChatSection = ({
       <div className="flex-grow overflow-y-auto mt-4 relative">
         {interactions.length === 0 ? (
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-gray-500">
-              <p className="text-black font-bold">You haven't started a conversation yet</p>
+              <p className="text-black font-bold">You haven&apos;t started a conversation yet</p>
               <p className="text-sm">Get started by typing a message below</p>
               <img src="/icons/chat.svg" alt="Chat Illustration" className="w-24 h-24 filter grayscale"/>
             </div>

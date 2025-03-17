@@ -21,10 +21,6 @@ interface Document {
   interactions: Interaction[];
 }
 
-interface User {
-  name: string;
-}
-
 export default function DocumentPage() {
   const root = process.env.NEXT_PUBLIC_BACKEND_URL;
   const [document, setDocument] = useState<Document | null>(null);
