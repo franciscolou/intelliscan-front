@@ -1,15 +1,12 @@
 export const arrayBufferToBase64 = (buffer: ArrayBuffer): Promise<string> => {
   return new Promise((resolve, reject) => {
-    console.log("primeiros 10 bytes:", new Uint8Array(buffer).slice(0, 10));
     const blob = new Blob([buffer], { type: "image/jpeg" });
-    console.log(blob);
     const reader = new FileReader();
     
     reader.onloadend = () => {
       const base64data = reader.result?.toString().split(",")[1];
       
       if (base64data) {
-        console.log("Base64 data: ", base64data);
         resolve(base64data);
       } else {
         reject(new Error("Failed to convert ArrayBuffer to Base64"));

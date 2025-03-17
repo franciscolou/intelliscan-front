@@ -70,7 +70,6 @@ export default function Home() {
     };
 
     const fetchUser = async () => {
-      console.log("Fetching user information...");
       try {
         const response = await fetch(`${root}/auth/me`, {
           method: "GET",
@@ -85,10 +84,8 @@ export default function Home() {
         if (!response.ok) throw new Error("Error fetching user information");
 
         const userData = await response.json();
-        console.log("User data fetched successfully:", userData);
         setUser(userData);
       } catch (error) {
-        console.error("Error fetching user information:", error);
       }
     };
 
@@ -219,8 +216,6 @@ export default function Home() {
     if (!currentDocumentId) return;
 
     const token = localStorage.getItem("access_token");
-
-    console.log("currentDocumentId: ", currentDocumentId);
 
     try {
       const response = await fetch(`${root}/document/${currentDocumentId}`, {

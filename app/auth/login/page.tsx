@@ -43,7 +43,6 @@ const LoginPage = () => {
 
       const data = await response.json();
       const token = data.access_token;
-      console.log(token);
       localStorage.setItem("access_token", token);
 
       router.push("/");
