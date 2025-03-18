@@ -1,4 +1,3 @@
-// FileUpload.tsx
 import { ChangeEvent } from "react";
 
 interface FileUploadProps {

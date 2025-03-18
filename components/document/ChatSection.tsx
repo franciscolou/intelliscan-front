@@ -22,7 +22,7 @@ interface ChatSectionProps {
   inputValue: string;
   handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleKeyPress: (e: KeyboardEvent<HTMLInputElement>) => void;
-  isSending: boolean; // New prop for loading state
+  isSending: boolean;
 }
 
 const generatePDF = async (document: Document) => {
@@ -124,7 +124,7 @@ const ChatSection = ({
   inputValue,
   handleInputChange,
   handleKeyPress,
-  isSending, // New prop for loading state
+  isSending,
 }: ChatSectionProps) => {
   const lastInteractionRef = useRef<HTMLDivElement | null>(null);
 

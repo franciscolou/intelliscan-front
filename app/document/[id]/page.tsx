@@ -27,7 +27,7 @@ export default function DocumentPage() {
   const [error, setError] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState("");
   const [loading, setLoading] = useState(true);
-  const [isSending, setIsSending] = useState(false); // New state for loading spinner
+  const [isSending, setIsSending] = useState(false);
   const router = useRouter();
   const params = useParams();
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -117,9 +117,8 @@ export default function DocumentPage() {
     if (e.key === "Enter" && inputValue.trim()) {
       const prompt = inputValue.trim();
       setInputValue("");
-      setIsSending(true); // Set loading state to true
+      setIsSending(true);
 
-      // Display the prompt immediately
       const newInteraction: Interaction = { prompt, answer: "" };
       setDocument((prevDocument) => {
         if (!prevDocument) return null;
@@ -146,7 +145,6 @@ export default function DocumentPage() {
         const data = await response.json();
         const answer = data.answer;
 
-        // Update the interaction with the answer
         setDocument((prevDocument) => {
           if (!prevDocument) return null;
           const updatedInteractions = prevDocument.interactions.map((interaction) =>
@@ -164,7 +162,7 @@ export default function DocumentPage() {
           console.error("Unexpected error:", error);
         }
       } finally {
-        setIsSending(false); // Set loading state to false
+        setIsSending(false);
       }
     }
   };
@@ -204,7 +202,7 @@ export default function DocumentPage() {
             inputValue={inputValue}
             handleInputChange={handleInputChange}
             handleKeyPress={handleKeyPress}
-            isSending={isSending} // Pass loading state to ChatSection
+            isSending={isSending}
           />
         </div>
       </main>

@@ -1,4 +1,4 @@
-import { Document } from "../../types"; // Supondo que você tenha uma pasta de types com os tipos
+import { Document } from "../../types";
 
 interface DownloadButtonProps {
   document: Document;
