@@ -254,7 +254,7 @@ export default function Home() {
         {documents.length === 0 ? (
           <div className="flex flex-col items-center justify-center w-full h-full">
             <img src="/icons/file.svg" alt="Empty" className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 mb-4" />
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800">You don&apos;t have any documents yet.</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 text-center">You don&apos;t have any documents yet.</h2>
             <p className="mt-4 text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-500 text-center">Upload your first one by submitting it below</p>
           </div>
         ) : (
