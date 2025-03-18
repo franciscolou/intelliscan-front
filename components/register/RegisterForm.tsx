@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import InputField from "../InputField";
 
 interface RegisterFormProps {
@@ -12,7 +12,7 @@ interface RegisterFormProps {
     handleUsernameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handlePasswordChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     handleConfirmPasswordChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    handleSubmit: (e: React.FormEvent) => void;
+    handleSubmit: (e: React.FormEvent) => Promise<void>;
     isSubmitDisabled: boolean;
 }
 
@@ -30,10 +30,18 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
     handleSubmit,
     isSubmitDisabled,
 }) => {
+    const [loading, setLoading] = useState(false);
+
+    const onSubmit = async (e: React.FormEvent) => {
+        setLoading(true); // Set loading to true when the form is submitted
+        await handleSubmit(e);
+        setLoading(false); // Set loading back to false after the submission is finished
+    };
+
     return (
         <form
-            onSubmit={handleSubmit}
-            className="w-full md:w-3/5 rounded-lg p-6 md:p-10 pb-16 md:pb-32 relative"
+            onSubmit={onSubmit}
+            className="w-full md:w-3/5 lg:w-full xl:w-2/4 rounded-lg p-6 md:p-10 pb-16 md:pb-32 relative"
             style={{ backgroundColor: "rgba(255, 255, 255, 20%)" }}
         >
             <h2 className="text-xl md:text-2xl mb-4 font-bold">Create an account</h2>
@@ -80,14 +88,38 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
             </div>
             <button
                 type="submit"
-                disabled={isSubmitDisabled}
-                className={`absolute bottom-4 right-4 p-2 rounded transition-colors duration-300 ${
-                    isSubmitDisabled
+                disabled={isSubmitDisabled || loading}
+                className={`absolute bottom-4 right-4 p-2 w-24 h-10 rounded transition-colors duration-300 ${
+                    isSubmitDisabled || loading
                         ? "bg-gray-500 cursor-not-allowed"
                         : "bg-[#1ba7ca] hover:bg-[#5bde7e] cursor-pointer"
-                }`}
+                } flex items-center justify-center`}
             >
-                Register
+                {loading ? (
+                    <svg
+                        className="animate-spin h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                            className="opacity-25"
+                        />
+                        <path
+                            fill="currentColor"
+                            d="M4 12a8 8 0 0116 0"
+                            className="opacity-75"
+                        />
+                    </svg>
+                ) : (
+                    'Register'
+                )}
             </button>
         </form>
     );

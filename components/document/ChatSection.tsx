@@ -135,20 +135,17 @@ const ChatSection = ({
   }, [interactions]);
 
   return (
-    <div
-      className="w-7/10 p-4 flex flex-col bg-white shadow-lg rounded-lg ml-4"
-      style={{ maxHeight: "calc(100vh - 100px)" }}
-    >
+    <div className="p-4 flex flex-col bg-white shadow-lg rounded-lg">
       <h2 className="text-xl font-semibold sticky top-0 bg-white z-10">
         Ask for information
       </h2>
-      <div className="flex-grow overflow-y-auto mt-4 relative">
+      <div className="flex-grow overflow-y-auto mt-4 relative" style={{ maxHeight: "calc(100vh - 100px)" }}> {/* Ajuste a altura mínima aqui */}
         {interactions.length === 0 ? (
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-gray-500">
-              <p className="text-black font-bold">You haven&apos;t started a conversation yet</p>
-              <p className="text-sm">Get started by typing a message below</p>
-              <img src="/icons/chat.svg" alt="Chat Illustration" className="w-24 h-24 filter grayscale"/>
-            </div>
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-gray-500">
+            <p className="text-black font-bold">You haven&apos;t started a conversation yet</p>
+            <p className="text-sm">Get started by typing a message below</p>
+            <img src="/icons/chat.svg" alt="Chat Illustration" className="w-24 h-24 filter grayscale" />
+          </div>
         ) : (
           interactions.map((p, index) => (
             <div
@@ -167,10 +164,7 @@ const ChatSection = ({
         )}
       </div>
       <div className="mt-4 flex items-center relative">
-        <DownloadButton
-          document={document}
-          generatePDF={() => generatePDF(document)}
-        />
+        <DownloadButton document={document} generatePDF={() => generatePDF(document)} />
         <div className="flex-grow relative ml-2">
           <input
             type="text"
@@ -182,9 +176,7 @@ const ChatSection = ({
           />
           <button
             className={`absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-2 rounded-full flex items-center ${
-              inputValue.trim()
-                ? "bg-black text-white cursor-pointer"
-                : "bg-gray-600 text-gray-500 cursor-not-allowed"
+              inputValue.trim() ? "bg-black text-white cursor-pointer" : "bg-gray-600 text-gray-500 cursor-not-allowed"
             }`}
             onClick={() =>
               handleKeyPress({ key: "Enter" } as KeyboardEvent<HTMLInputElement>)
@@ -194,11 +186,7 @@ const ChatSection = ({
             {isSending ? (
               <div className="animate-spin h-4 w-4 border-4 border-white border-t-transparent rounded-full"></div>
             ) : (
-              <img
-                src="/icons/send_msg.svg"
-                alt="Send"
-                className="w-4 h-4 filter invert"
-              />
+              <img src="/icons/send_msg.svg" alt="Send" className="w-4 h-4 filter invert" />
             )}
           </button>
         </div>

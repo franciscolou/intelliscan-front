@@ -32,6 +32,12 @@ export default function DocumentPage() {
   const params = useParams();
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
+  const getTitleFontSize = (title: string) => {
+    if (title.length > 50) return "text-lg";
+    if (title.length > 30) return "text-xl";
+    return "text-2xl";
+  };
+
   useEffect(() => {
     const token = localStorage.getItem("access_token");
 
@@ -191,10 +197,10 @@ export default function DocumentPage() {
           className="w-6 h-6 cursor-pointer mb-4 ml-4"
           onClick={() => router.back()}
         />
-        <h1 className="text-2xl font-bold mb-4 mt-4 border-b border-gray-300 pb-2 w-full pl-4">
+        <h1 className={`${getTitleFontSize(document.title)} font-bold mb-4 mt-4 border-b border-gray-300 pb-2 w-full pl-4`}>
           {document.title}
         </h1>
-        <div className="flex w-full h-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full w-full">
           <DocumentContent document={document} />
           <ChatSection
             document={document}
